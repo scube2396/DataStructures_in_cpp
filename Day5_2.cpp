@@ -263,15 +263,5 @@ case 7: cout<<"\nTHANK YOU\n";
 default:cout<<"you have entered a wrong option";
 }
 }while(choice!=7);
-/*d.create(5);
-d.create(6);
-d.create(7);
-d.create(2);
-d.display();
-d.insertashead();
-d.display();
-d.insertaslastnode();
-d.display();
-d.search();*/
 
 }
