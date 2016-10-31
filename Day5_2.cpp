@@ -23,6 +23,7 @@ public:
 	void search();
 	void insertatanyposition();
 	void reverse();
+	void dele();
 };
 
 dcll::dcll()
@@ -224,6 +225,50 @@ p->prev=temp;
 }
 }
 
+void dcll::dele()
+{
+node *temp,*p;
+string name;
+int c3=1,pos,i,num;
+if(head==null)
+{
+cout<<"\nNo value exists..!!\n";
+}
+else{
+temp=head;
+while(temp->next!=head)
+{
+temp=temp->next;
+c3++;
+}
+cout<<"\nThe length is\n"<<c3;
+temp=head;
+p=head;
+cout<<"\nEnter the position of node which is to be deleted:\n";
+cin>>pos;
+if(pos==1)
+{
+temp=temp->next;
+p=p->prev;
+temp->prev=p;
+p->next=temp;
+temp=temp->prev->next;
+head=temp;
+}
+else
+{
+p=p->next;
+for(i=0;i<pos-2;i++)
+{
+temp=temp->next;
+p=p->next;
+}
+temp->next=p->next;
+p->next->prev=temp;
+}
+}
+}
+
 int main()
 {
 
@@ -232,7 +277,7 @@ string name;
 dcll d;
 do
 {
-cout<<"\nPLEASE ENTERYOUR CHOICE:\n1.CREATE\n2.INSERT AS FIRST NODE\n3.INSERT AS LAST NODE\n4.SEARCH\n5.REVERSE\n6.INSERT AT ANY POSITION\n7.EXIT";
+cout<<"\nPLEASE ENTER YOUR CHOICE:\n1.CREATE\n2.INSERT AS FIRST NODE\n3.INSERT AS LAST NODE\n4.SEARCH\n5.REVERSE\n6.INSERT AT ANY POSITION\n7.DELETE\n8.EXIT";
 cin>>choice;
 switch(choice)
 {
@@ -258,10 +303,14 @@ case 5: d.reverse();
 case 6: d.insertatanyposition();
 	d.display();
 	break;
-case 7: cout<<"\nTHANK YOU\n";
+case 7: d.dele();
+	d.display();
+	break;
+case 8: cout<<"\nTHANK YOU\n";
 	break;
 default:cout<<"you have entered a wrong option";
 }
-}while(choice!=7);
+}while(choice!=8);
+
 
 }
